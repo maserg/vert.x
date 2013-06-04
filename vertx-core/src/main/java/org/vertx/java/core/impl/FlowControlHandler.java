@@ -16,15 +16,16 @@
 
 package org.vertx.java.core.impl;
 
-import io.netty.buffer.BufType;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.*;
 
 
 /**
+ *
+ * TODO: Fix me!
  * @author <a href="mailto:nmaurer@redhat.com">Norman Maurer</a>
  */
-public class FlowControlHandler extends ChannelOperationHandlerAdapter {
+public class FlowControlHandler extends ChannelHandlerAdapter {
 
   private final FlowControlStateEvent state = new FlowControlStateEvent();
   private final ChannelFutureListener listener = new ChannelFutureListener() {
@@ -37,7 +38,7 @@ public class FlowControlHandler extends ChannelOperationHandlerAdapter {
         } else {
           if (future.isSuccess() && outboundBuf.isReadable()) {
             // there is something left to flush so try to flush it now!
-            ctx.flush().addListener(this);
+            //ctx.flush().addListener(this);
           }
         }
       }
@@ -90,7 +91,6 @@ public class FlowControlHandler extends ChannelOperationHandlerAdapter {
     });
   }
 
-  @Override
   public void flush(final ChannelHandlerContext ctx, ChannelPromise promise) throws Exception {
     boolean writable = state.isWritable();
     if (writable) {
@@ -104,18 +104,19 @@ public class FlowControlHandler extends ChannelOperationHandlerAdapter {
       promise.addListener(listener);
 
     }
-    ctx.flush(promise);
+    //ctx.flush(promise);
   }
 
   @Override
   public void handlerAdded(final ChannelHandlerContext ctx) throws Exception {
     this.ctx = ctx;
     Channel channel = ctx.channel();
-    if (channel.metadata().bufferType() == BufType.BYTE) {
+    /*if (channel.metadata().bufferType() == BufType.BYTE) {
       outboundBuf = channel.unsafe().headContext().outboundByteBuffer();
     } else {
       throw new IllegalStateException("Only supported for Channels which handle bytes");
     }
+    */
     super.handlerAdded(ctx);
   }
 }
