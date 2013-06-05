@@ -24,6 +24,7 @@ import org.vertx.java.core.net.NetSocket;
 import org.vertx.java.core.streams.Pump;
 import org.vertx.java.testframework.TestClientBase;
 import org.vertx.java.testframework.TestUtils;
+import sun.nio.cs.US_ASCII;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

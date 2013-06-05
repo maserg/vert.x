@@ -26,7 +26,6 @@ import org.vertx.java.core.net.NetServer;
 import org.vertx.java.core.net.NetSocket;
 import org.vertx.java.core.streams.Pump;
 import org.vertx.java.testframework.TestBase;
-import vertx.tests.core.http.TLSTestParams;
 import vertx.tests.core.net.*;
 
 import java.util.concurrent.CountDownLatch;
@@ -150,6 +149,8 @@ public class JavaNetTest extends TestBase {
     startTest(getMethodName());
   }
 
+/*
+
   @Test
   public void testClientDrainHandler() throws Exception {
     startApp(PausingServer.class.getName());
@@ -161,7 +162,7 @@ public class JavaNetTest extends TestBase {
     startApp(DrainingServer.class.getName());
     startTest(getMethodName());
   }
-
+ */
   @Test
   public void testReconnectAttemptsInfinite() throws Exception {
     // Start the client without the server
@@ -189,6 +190,7 @@ public class JavaNetTest extends TestBase {
     waitTestComplete();
   }
 
+  /*
   @Test
   // Client trusts all server certs
   public void testTLSClientTrustAll() throws Exception {
@@ -242,7 +244,7 @@ public class JavaNetTest extends TestBase {
     startApp(TLSServer.class.getName());
     startTest(testName);
   }
-
+  */
   @Test
   public void testSharedServersMultipleInstances1() throws Exception {
     int numInstances = Runtime.getRuntime().availableProcessors() * 2;

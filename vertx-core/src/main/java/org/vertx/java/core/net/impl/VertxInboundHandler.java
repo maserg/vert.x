@@ -71,6 +71,7 @@ public abstract class VertxInboundHandler<C extends ConnectionBase> extends Chan
 
   @Override
   public void exceptionCaught(ChannelHandlerContext chctx, final Throwable t) throws Exception {
+    t.printStackTrace();
     final Channel ch = chctx.channel();
     final C sock = connectionMap.remove(ch);
     if (sock != null) {

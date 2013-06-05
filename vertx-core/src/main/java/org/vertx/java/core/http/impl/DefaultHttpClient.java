@@ -574,7 +574,7 @@ public class DefaultHttpClient implements HttpClient {
 
     @Override
     protected void doMessageReceived(ClientConnection conn, ChannelHandlerContext ctx, Object msg) {
-      if (conn == null) {
+      if (conn == null || conn.isClosed()) {
         return;
       }
       boolean valid = false;

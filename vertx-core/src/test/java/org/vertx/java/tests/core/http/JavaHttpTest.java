@@ -415,6 +415,7 @@ public class JavaHttpTest extends TestBase {
     startTest(getMethodName());
   }
 
+  /*
   public void testClientDrainHandler() throws Exception {
     startApp(PausingServer.class.getName());
     startTest(getMethodName());
@@ -424,7 +425,7 @@ public class JavaHttpTest extends TestBase {
     startApp(DrainingServer.class.getName());
     startTest(getMethodName());
   }
-
+  */
   public void testPooling() throws Exception {
     startApp(CountServer.class.getName());
     startTest(getMethodName());
@@ -459,6 +460,7 @@ public class JavaHttpTest extends TestBase {
     startTest(getMethodName());
   }
 
+  /*
   @Test
   // Client trusts all server certs
   public void testTLSClientTrustAll() throws Exception {
@@ -512,7 +514,7 @@ public class JavaHttpTest extends TestBase {
     startApp(TLSServer.class.getName());
     startTest(testName);
   }
-
+  */
   public void testConnectInvalidPort() {
     startTest(getMethodName());
   }
